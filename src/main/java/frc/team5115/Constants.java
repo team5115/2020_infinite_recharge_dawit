@@ -59,7 +59,9 @@ public class Constants{
     //Joystick
     public static byte JOYSTICK_X_AXIS_ID = 0;
     public static byte JOYSTICK_Y_AXIS_ID = 1;
-    public static byte JOYSTICK_THROTTLE_AXIS_ID = 3;
+    public static final int STRAFE_RIGHT_ID = 17;
+    public static final int STRAFE_LEFT_ID = 19;
+    public static byte JOYSTICK_SPEED_AXIS_ID = 3;
     //X-Box
     public static byte XBOX_Y_AXIS_ID = 1;
     public static byte XBOX_X_AXIS_ID = 4;
@@ -98,4 +100,3 @@ public class Constants{
         }
     }
 }
-

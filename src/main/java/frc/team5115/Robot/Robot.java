@@ -1,15 +1,14 @@
-package frc.team5115.Robot;
+package frc.team5115.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import io.github.oblarg.oblog.Logger;
-
-import static frc.team5115.Constants.startingConfiguration;
+import static frc.team5115.Constants.*;
+import frc.team5115.Robot.RobotContainer;
 
 
 public class Robot extends TimedRobot {
-    private Command autoCommand;
     private RobotContainer robotContainer;
 
     /**
@@ -36,19 +35,6 @@ public class Robot extends TimedRobot {
     public void disabledPeriodic() {
     }
 
-    @Override
-    public void autonomousInit() {
-        autoCommand = robotContainer.getAutonomousCommand();
-
-        // schedule the autonomous command (example)
-        if (autoCommand != null) {
-            robotContainer.locationator.setAngleAndLocation(90, startingConfiguration.getX(), 30);
-            autoCommand.schedule();
-            System.out.println("Scheduling auto command");
-        } else System.out.println("Boy you better fix this bitch-ass problem your auto code done broke you a little shit cuz you code sum dumb shit you dumbass it caint find no code.");
-        //CommandScheduler.getInstance().enable();
-    }
-
     /**
      * This function is called periodically during autonomous.
      */
@@ -62,10 +48,6 @@ public class Robot extends TimedRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autoCommand != null) {
-            autoCommand.cancel();
-        }
-
         robotContainer.startTeleop();
     }
 

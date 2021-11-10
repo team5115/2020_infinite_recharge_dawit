@@ -5,40 +5,27 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.team5115.Commands.StopClimb;
+import edu.wpi.first.wpilibj.Timer;
 
 import static frc.team5115.Constants.SCISSOR_MOTOR_ID;
 import static frc.team5115.Constants.WINCH_MOTOR_ID;
 
 public class Climber extends SubsystemBase {
-    TalonSRX winch;
-    TalonSRX scissor;
-    double climbspeed = -0.75;
-    DigitalInput bottomClimberLimitSwitch;
+    private TalonSRX climbermotor;
+    private double climbspeed;
 
     public Climber(){
-        winch = new TalonSRX(WINCH_MOTOR_ID);
-        scissor = new TalonSRX(SCISSOR_MOTOR_ID);
-        setDefaultCommand(new StopClimb(this).perpetually());
-        bottomClimberLimitSwitch  =new DigitalInput(1);
+        climbermotor = new TalonSRX(WINCH_MOTOR_ID);
     }
 
-    public void ScissorUp(){
-        scissor.set(ControlMode.PercentOutput, -1);
+    public void StartClimb(){
+        climbermotor.set(ControlMode.PercentOutput,0.5);
+
+    }
+    
+    public void StopClimb(){
+        climbermotor.set(ControlMode.PercentOutput,0.0);
     }
 
-    public void ScissorDown(){
-        scissor.set(ControlMode.PercentOutput, -climbspeed);
-    }
-
-    public void WinchDown(){
-        winch.set(ControlMode.PercentOutput, -climbspeed);
-    }
-
-    public void WinchRelease(){winch.set(ControlMode.PercentOutput, .75* climbspeed);}
-
-    public void StopClimb() {
-        scissor.set(ControlMode.PercentOutput, 0);
-        winch.set(ControlMode.PercentOutput, 0);
-    }
 
 }
