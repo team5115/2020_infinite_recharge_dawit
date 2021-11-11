@@ -1,11 +1,13 @@
-package frc.team5115.robot;
+package frc.team5115.Robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import io.github.oblarg.oblog.Logger;
-import static frc.team5115.Constants.*;
-import frc.team5115.Robot.RobotContainer;
+//import static frc.team5115.Constants.*;
+//import frc.team5115.Robot.RobotContainer;
+
+// import static frc.team5115.Constants.startingConfiguration;
 
 
 public class Robot extends TimedRobot {
